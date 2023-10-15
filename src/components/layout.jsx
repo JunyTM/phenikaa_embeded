@@ -15,7 +15,7 @@ export default function LeadGrid() {
     }, 1000);
   }, []);
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - var(--mantine-spacing-md) / 2)`;
   return (
     <Container size="fluid" className="LeadGrid">

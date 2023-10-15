@@ -26,6 +26,10 @@
   height: 100%;
   border-radius: 4%;
   background-color: #a2a5a84f;
+  background-image: url('../background/bg_traffic1.jpg');
+  background-size: contain; /* Adjust as needed */
+  background-repeat: no-repeat; /* Adjust as needed */
+  box-shadow: inset 0 0 10px #ebe9e95b;
 }
 
 .TrafficInfo,

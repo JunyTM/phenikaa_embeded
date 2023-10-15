@@ -29,8 +29,11 @@ export default function TrafficTimeController() {
       <Container
         style={{
           width: "90%",
-          height: "50%",
+          height: "48%",
           padding: "0.5rem",
+          borderRadius: "0.2rem",
+          marginBottom: "0.5rem",
+          // backgroundColor: "#a2a5a84f",
         }}
       >
         <InputTimeLED title="- Time red:" time="9" />
@@ -58,7 +61,7 @@ export default function TrafficTimeController() {
         mt="1rem"
         ta="center"
       >
-        <strong >*Note:</strong> Time traffic not allowed hight than 10s
+        <strong>*Note:</strong> Time traffic not allowed hight than 10s
       </Text>
     </Container>
   );

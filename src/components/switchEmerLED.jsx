@@ -10,7 +10,7 @@ import {
 import { IconSun, IconMoonStars } from "@tabler/icons-react";
 
 export default function SwitchEmerLED(props) {
-  const [emerLoading, setEmerLoading] = useState(true);
+  const [emerLoading, setEmerLoading] = useState(false);
   const theme = useMantineTheme();
   const sunIcon = (
     <IconSun
@@ -51,7 +51,7 @@ export default function SwitchEmerLED(props) {
       >
         {props.title}
       </Title>
-      {emerLoading ? (
+      {!emerLoading ? (
         <Button
           variant="filled"
           color="rgba(189, 185, 185, 1)"
@@ -65,7 +65,7 @@ export default function SwitchEmerLED(props) {
           size="xl"
           loading
           loaderProps={{ type: "dots" }}
-          style={{ alignSelf: "center" }}
+          style={{ alignSelf: "center", backgroundColor: "#a2a5a84f" }}
         />
       )}
     </Flex>

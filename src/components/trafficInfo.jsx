@@ -9,9 +9,8 @@ import {
 } from "@mantine/core";
 
 export default function TrafficInfo() {
-  const [loading, setLoading] = React.useState(false);
-  useEffect(() => {
-  },[]);
+  const [messloading, setMessloading] = React.useState(false);
+  useEffect(() => {}, []);
 
   return (
     <Container size="fluid" className="TrafficInfo read-the-docs">
@@ -20,6 +19,7 @@ export default function TrafficInfo() {
         style={{
           fontFamily: "Greycliff CF, var(--mantine-font-family)",
           fontSize: "2rem",
+          textShadow: "0 0 70px #fff",
         }}
         fw={900}
         ta="center"
@@ -54,7 +54,7 @@ export default function TrafficInfo() {
             backgroundColor: "#f7f7f7",
           }}
           rightSection={
-            loading && (
+            messloading && (
               <ActionIcon
                 size="xl"
                 loading
@@ -81,6 +81,20 @@ export default function TrafficInfo() {
           Update
         </Button>
       </Flex>
+      <Text
+        style={{
+          fontFamily: "Greycliff CF, var(--mantine-font-family)",
+          fontWeight: 500,
+          fontSize: "0.9rem",
+          textShadow: "0 0 10px #ccc",
+        }}
+        mt="4rem"
+        ta="start"
+      >
+        <strong>*Note:</strong> The LED information is a string of 12 characters
+        and not allowed to contain special characters. The string will show on
+        the scren LCD 2*16 through by Raspberry Pi.
+      </Text>
     </Container>
   );
 }
