@@ -1,0 +1,52 @@
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.LeadGrid {
+  width: 100vw;
+  height: 100%;
+  padding-top: 6rem !important;
+  padding-left: 10rem !important;
+  padding-right: 10rem !important;
+  // background-color: #888;
+  background-image: url('../background/bg_website.png');
+  background-size: cover; /* Adjust as needed */
+  background-repeat: no-repeat; /* Adjust as needed */
+}
+
+.read-the-docs {
+  color: #555555;
+}
+
+.TrafficGrap {
+  width: 100%;
+  height: 100%;
+  border-radius: 4%;
+  background-color: #a2a5a84f;
+}
+
+.TrafficInfo,
+.TrafficTimeController,
+.TrafficModeController {
+  width: 100%;
+  height: 100%;
+  border-radius: 4%;
+  background-color: rgba(252, 251, 249, 0.88);
+  box-shadow: inset 0 0 10px #6867675b;
+}
+
+.TrafficInfo{
+  .buttonUpdate:active{
+    // background-color: #a2a5a84f !important;
+  }
+}
+
+.TrafficTimeController {
+
+}
+
+.TrafficModeController {}
+

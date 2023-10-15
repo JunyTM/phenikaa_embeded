@@ -1,0 +1,62 @@
+import React from "react";
+import {
+  Title,
+  Flex,
+  Input,
+  Switch,
+  useMantineTheme,
+  rem,
+} from "@mantine/core";
+import { IconSun, IconMoonStars } from "@tabler/icons-react";
+
+export default function SwitchModLED(props) {
+  const theme = useMantineTheme();
+  const sunIcon = (
+    <IconSun
+      style={{ width: rem(16), height: rem(16) }}
+      stroke={2.5}
+      color={theme.colors.yellow[4]}
+    />
+  );
+  const moonIcon = (
+    <IconMoonStars
+      style={{ width: rem(16), height: rem(16) }}
+      stroke={2.5}
+      color={theme.colors.blue[6]}
+    />
+  );
+
+  return (
+    <Flex
+      w="100%"
+      ml={10}
+      mih={50}
+      gap={30}
+      justify="space-between"
+      align="flex-start"
+      direction="row"
+      wrap="wrap"
+      //   bg={"#f7f7f7"}
+    >
+      <Title
+        order={3}
+        size="h5"
+        style={{
+          fontFamily: "Greycliff CF, var(--mantine-font-family)",
+          alignSelf: "center",
+        }}
+        fw={900}
+        ta="center"
+      >
+        {props.title}
+      </Title>
+      <Switch
+        size="md"
+        color="dark.4"
+        onLabel={sunIcon}
+        offLabel={moonIcon}
+        style={{ alignSelf: "center" }}
+      />
+    </Flex>
+  );
+}
