@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Container,
   Input,
@@ -7,10 +8,29 @@ import {
   Text,
   ActionIcon,
 } from "@mantine/core";
-
-export default function TrafficInfo() {
+export default function TrafficInfo({ objectModel }) {
   const [messloading, setMessloading] = React.useState(false);
-  useEffect(() => {}, []);
+  const [message, setMessage] = useState("");
+  const [data, setData] = useState(objectModel);
+
+  const handelButtonUpdate = () => {
+    setMessloading(true);
+    setTimeout(() => {
+      setData({
+        ...data,
+        info_show: message,
+      }); // update data led LCD
+    }, 1000);
+  };
+
+  useEffect(() => {
+    console.log(data);
+    axios
+      .put(import.meta.env.VITE_APP_BASE_URL + "/traffic", data)
+      .then((response) => {
+        setMessloading(false);
+      });
+  }, [data]);
 
   return (
     <Container size="fluid" className="TrafficInfo read-the-docs">
@@ -65,6 +85,9 @@ export default function TrafficInfo() {
               />
             )
           }
+          onChange={(event) => {
+            setMessage(event.target.value);
+          }}
         />
         <Button
           variant="filled"
@@ -77,6 +100,7 @@ export default function TrafficInfo() {
             alignSelf: "center",
           }}
           className="buttonUpdate"
+          onClick={handelButtonUpdate}
         >
           Update
         </Button>

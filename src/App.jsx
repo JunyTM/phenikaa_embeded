@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LeadGrid from "./components/layout";
 import "./assets/sass/App.scss";
 import "./assets/sass/Responsive.scss";
@@ -8,7 +8,7 @@ import { MantineProvider } from "@mantine/core";
 function App() {
   return (
     <MantineProvider>
-        <LeadGrid />
+      <LeadGrid />
     </MantineProvider>
   );
 }
