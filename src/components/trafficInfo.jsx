@@ -11,26 +11,24 @@ import {
 export default function TrafficInfo({ objectModel }) {
   const [messloading, setMessloading] = React.useState(false);
   const [message, setMessage] = useState("");
-  const [data, setData] = useState(objectModel);
 
   const handelButtonUpdate = () => {
     setMessloading(true);
-    setTimeout(() => {
-      setData({
-        ...data,
+
+    axios
+      .put(import.meta.env.VITE_APP_BASE_URL + "/traffic", {
+        ...objectModel,
         info_show: message,
-      }); // update data led LCD
+      })
+      .then((response) => {
+        console.log(response.data);
+        
+      });
+
+    setTimeout(() => {
+      setMessloading(false);
     }, 1000);
   };
-
-  useEffect(() => {
-    console.log(data);
-    axios
-      .put(import.meta.env.VITE_APP_BASE_URL + "/traffic", data)
-      .then((response) => {
-        setMessloading(false);
-      });
-  }, [data]);
 
   return (
     <Container size="fluid" className="TrafficInfo read-the-docs">

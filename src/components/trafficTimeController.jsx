@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import InputTimeLED from "./inputTimeLED";
 import { Container, Title, Button, Text } from "@mantine/core";
 
-export default function TrafficTimeController() {
-  // const icon = <IconPhoto size={14} />;
+export default function TrafficTimeController({ objectModel }) {
+  const [data, setData] = useState(objectModel);
+
+  const handelButtonUpdate = () => {
+    axios
+      .put(import.meta.env.VITE_APP_BASE_URL + "/traffic", data)
+      .then((response) => {
+        console.log(response.data);
+      });
+  };
 
   return (
     <Container size="fluid" className="TrafficTimeController read-the-docs">
@@ -36,9 +45,27 @@ export default function TrafficTimeController() {
           // backgroundColor: "#a2a5a84f",
         }}
       >
-        <InputTimeLED title="- Time red:" time="9" />
-        <InputTimeLED title="- Time yellow:" time="3" />
-        <InputTimeLED title="- Time green:" time="6" />
+        <InputTimeLED
+          title="- Time red:"
+          time={data.time_red}
+          type="time_red"
+          data={data}
+          setTime={setData}
+        />
+        <InputTimeLED
+          title="- Time yellow:"
+          time={data.time_yellow}
+          type="time_yellow"
+          data={data}
+          setTime={setData}
+        />
+        <InputTimeLED
+          title="- Time green:"
+          time={data.time_green}
+          type="time_green"
+          data={data}
+          setTime={setData}
+        />
       </Container>
 
       <Button
@@ -47,6 +74,7 @@ export default function TrafficTimeController() {
         // leftSection={icon}
         // rightSection={icon}
         variant="filled"
+        onClick={handelButtonUpdate}
       >
         submit
       </Button>

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Title, Text } from "@mantine/core";
 import SwitchModLED from "./switchModLED";
 import SwitchEmerLED from "./switchEmerLED";
 import InputTimeLED from "./inputTimeLED";
 
-export default function TrafficModeController() {
+export default function TrafficModeController({ objectModel }) {
+  const [data, setData] = useState(objectModel);
+
   return (
     <Container size="fluid" className="TrafficModeController read-the-docs">
       <Title
@@ -34,9 +36,19 @@ export default function TrafficModeController() {
           // backgroundColor: "#a2a5a84f",
         }}
       >
-        <SwitchModLED title="- Switch Morning/Night:" />
-        <SwitchEmerLED title="- Emergency:" />
-        <InputTimeLED title="- Time emergency:" time="9" />
+        <SwitchModLED
+          title="- Switch Morning/Night:"
+          data={data}
+          setData={setData}
+        />
+        <SwitchEmerLED title="- Emergency:" data={data} setData={setData} />
+        <InputTimeLED
+          title="- Time emergency:"
+          type="time_emergency"
+          time={data.time_emergency}
+          data={data}
+          setTime={setData}
+        />
       </Container>
 
       <Text

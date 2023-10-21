@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {
   Title,
   Flex,
@@ -25,6 +26,18 @@ export default function SwitchModLED(props) {
       color={theme.colors.blue[6]}
     />
   );
+
+  const handelTrafficMode = (event) => {
+    console.log("is night:", event.target.checked);
+    axios
+      .put(import.meta.env.VITE_APP_BASE_URL + "/traffic", {
+        ...props.data,
+        is_night: event.target.checked,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+  };
 
   return (
     <Flex
@@ -56,6 +69,7 @@ export default function SwitchModLED(props) {
         onLabel={sunIcon}
         offLabel={moonIcon}
         style={{ alignSelf: "center" }}
+        onChange={handelTrafficMode}
       />
     </Flex>
   );

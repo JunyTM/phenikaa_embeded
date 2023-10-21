@@ -13,57 +13,64 @@ export default function LeadGrid() {
   const [data, setData] = useState({});
   const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - var(--mantine-spacing-md) / 2)`;
 
+  const isEmpty = (v) => {
+    return Object.keys(v).length === 0;
+  };
+
   useEffect(() => {
     axios
       .get(import.meta.env.VITE_APP_BASE_URL + "/traffic")
       .then((response) => {
-        console.log(response.data);
         setData(response.data.data);
       });
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   }, []);
-
-  
-
+  console.log(data);
   return (
-    <Container size="fluid" className="LeadGrid">
-      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={80}>
-        <Skeleton
-          height={PRIMARY_COL_HEIGHT}
-          radius="md"
-          visible={loading}
-          children={<TrafficGrap />}
-        />
+    <React.Fragment>
+      {isEmpty(data) ? (
+        <Container size="fluid" className="LeadGrid"></Container>
+      ) : (
+        <Container size="fluid" className="LeadGrid">
+          <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={80}>
+            <Skeleton
+              height={PRIMARY_COL_HEIGHT}
+              radius="md"
+              visible={loading}
+              children={<TrafficGrap />}
+            />
 
-        <Grid gutter="lg">
-          <Grid.Col>
-            <Skeleton
-              height={SECONDARY_COL_HEIGHT}
-              radius="md"
-              visible={loading}
-              children={<TrafficInfo objectModel={data} />}
-            />
-          </Grid.Col>
-          <Grid.Col span={6}>
-            <Skeleton
-              height={SECONDARY_COL_HEIGHT}
-              radius="md"
-              visible={loading}
-              children={<TrafficTimeController data={data} />}
-            />
-          </Grid.Col>
-          <Grid.Col span={6}>
-            <Skeleton
-              height={SECONDARY_COL_HEIGHT}
-              radius="md"
-              visible={loading}
-              children={<TrafficModeController data={data} />}
-            />
-          </Grid.Col>
-        </Grid>
-      </SimpleGrid>
-    </Container>
+            <Grid gutter="lg">
+              <Grid.Col>
+                <Skeleton
+                  height={SECONDARY_COL_HEIGHT}
+                  radius="md"
+                  visible={loading}
+                  children={<TrafficInfo objectModel={data} />}
+                />
+              </Grid.Col>
+              <Grid.Col span={6}>
+                <Skeleton
+                  height={SECONDARY_COL_HEIGHT}
+                  radius="md"
+                  visible={loading}
+                  children={<TrafficTimeController objectModel={data} />}
+                />
+              </Grid.Col>
+              <Grid.Col span={6}>
+                <Skeleton
+                  height={SECONDARY_COL_HEIGHT}
+                  radius="md"
+                  visible={loading}
+                  children={<TrafficModeController objectModel={data} />}
+                />
+              </Grid.Col>
+            </Grid>
+          </SimpleGrid>
+        </Container>
+      )}
+    </React.Fragment>
   );
 }

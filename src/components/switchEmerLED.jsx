@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import {
   Title,
   Flex,
@@ -26,6 +27,17 @@ export default function SwitchEmerLED(props) {
       color={theme.colors.blue[6]}
     />
   );
+
+  const handelButtonUpdate = () => {
+    axios
+      .put(import.meta.env.VITE_APP_BASE_URL + "/traffic", {
+        ...props.data,
+        is_emergency: true,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+  };
 
   return (
     <Flex
@@ -57,6 +69,7 @@ export default function SwitchEmerLED(props) {
           color="rgba(189, 185, 185, 1)"
           radius="lg"
           style={{ alignSelf: "center" }}
+          onClick={handelButtonUpdate}
         >
           Button
         </Button>

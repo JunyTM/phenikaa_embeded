@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Title, Flex, Input } from "@mantine/core";
 
 export default function InputTimeLED(props) {
@@ -40,6 +40,13 @@ export default function InputTimeLED(props) {
           border: "2px dashed #ccc",
           backgroundColor: "#f7f7f7",
           fontWeight: 600,
+        }}
+        onChange={(event) => {
+          console.log(event.target.value);
+          props.setTime({
+            ...props.data,
+            [props.type]: parseInt(event.target.value),
+          });
         }}
       />
     </Flex>
