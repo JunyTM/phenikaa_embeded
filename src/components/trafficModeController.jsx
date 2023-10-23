@@ -41,7 +41,7 @@ export default function TrafficModeController({ objectModel }) {
           data={data}
           setData={setData}
         />
-        <SwitchEmerLED title="- Emergency:" data={data} setData={setData} />
+        {/* <SwitchEmerLED title="- Emergency:" data={data} setData={setData} /> */}
         <InputTimeLED
           title="- Time emergency:"
           type="time_emergency"

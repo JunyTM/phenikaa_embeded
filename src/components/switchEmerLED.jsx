@@ -7,32 +7,17 @@ import {
   Button,
   useMantineTheme,
   rem,
+  Switch,
 } from "@mantine/core";
 import { IconSun, IconMoonStars } from "@tabler/icons-react";
 
 export default function SwitchEmerLED(props) {
-  const [emerLoading, setEmerLoading] = useState(false);
-  const theme = useMantineTheme();
-  const sunIcon = (
-    <IconSun
-      style={{ width: rem(16), height: rem(16) }}
-      stroke={2.5}
-      color={theme.colors.yellow[4]}
-    />
-  );
-  const moonIcon = (
-    <IconMoonStars
-      style={{ width: rem(16), height: rem(16) }}
-      stroke={2.5}
-      color={theme.colors.blue[6]}
-    />
-  );
-
-  const handelButtonUpdate = () => {
+  const handelSwitchUpdate = (event) => {
+    console.log("is night:", event.target.checked);
     axios
       .put(import.meta.env.VITE_APP_BASE_URL + "/traffic", {
         ...props.data,
-        is_emergency: true,
+        is_emergency: event.target.checked,
       })
       .then((response) => {
         console.log(response.data);
@@ -63,24 +48,25 @@ export default function SwitchEmerLED(props) {
       >
         {props.title}
       </Title>
-      {!emerLoading ? (
-        <Button
-          variant="filled"
-          color="rgba(189, 185, 185, 1)"
-          radius="lg"
-          style={{ alignSelf: "center" }}
-          onClick={handelButtonUpdate}
-        >
-          Button
-        </Button>
-      ) : (
+      {/* {!emerLoading ? ( */}
+      <Switch
+        size="lg"
+        onLabel="ON"
+        offLabel="OFF"
+        style={{
+          fontFamily: "Greycliff CF, var(--mantine-font-family)",
+          alignSelf: "center",
+        }}
+        onChange={handelSwitchUpdate}
+      />
+      {/* ) : (
         <ActionIcon
           size="xl"
           loading
           loaderProps={{ type: "dots" }}
           style={{ alignSelf: "center", backgroundColor: "#a2a5a84f" }}
         />
-      )}
+      )} */}
     </Flex>
   );
 }

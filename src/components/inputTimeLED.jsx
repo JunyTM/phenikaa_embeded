@@ -4,7 +4,7 @@ import { Title, Flex, Input } from "@mantine/core";
 export default function InputTimeLED(props) {
   return (
     <Flex
-      w="90%"
+      w="95%"
       ml={10}
       mih={50}
       gap={30}
