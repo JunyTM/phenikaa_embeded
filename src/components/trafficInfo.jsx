@@ -5,6 +5,7 @@ import {
   Input,
   Button,
   Flex,
+  Title,
   Text,
   ActionIcon,
 } from "@mantine/core";
@@ -31,25 +32,28 @@ export default function TrafficInfo({ objectModel }) {
   };
 
   return (
-    <Container size="fluid" className="TrafficInfo read-the-docs">
-      <Text
-        p="2rem"
+    <Container className="TrafficInfo read-the-docs">
+      <Title
+        p="1.5rem"
+        width="100%"
+        order={1}
+        size="h1"
         style={{
+          // marginTop: "rem",
+          marginBottom: "4rem",
+          width: "90%",
+          borderBottomRightRadius: "0.5rem",
+          borderBottomLeftRadius: "0.5rem",
           fontFamily: "Greycliff CF, var(--mantine-font-family)",
-          fontSize: "2rem",
-          textShadow: "0 0 70px #fff",
+          textShadow: "0 0 10px #ccc",
+          // backgroundColor: "#f7f7f7",
         }}
         fw={900}
         ta="center"
-        variant="gradient"
-        gradient={{
-          from: "rgba(255, 56, 56, 1)",
-          to: "rgba(3, 91, 255, 1)",
-          deg: 90,
-        }}
       >
-        Traffic Information Control
-      </Text>
+        Quản lý thông tin hiển thị LCD
+      </Title>
+      <label style={{marginRight:"67%", textDecoration:"underline", fontWeight: 600}}>Mời nhập thông tin:</label>
       <Flex
         mih={100}
         gap={30}
@@ -57,17 +61,21 @@ export default function TrafficInfo({ objectModel }) {
         align="flex-start"
         direction="row"
         wrap="wrap"
-      >
+      > 
+        
         <Input
           variant="unstyled"
           size="xl"
           radius="xs"
-          placeholder="Input LED information"
+          placeholder={
+            objectModel.info_show
+              ? "Data: " + objectModel.info_show
+              : "Nhập thông tin hiển thị"
+          }
           style={{
             width: "30rem",
-            // padding: "0.1rem",
             paddingLeft: "2rem",
-            border: "4px dashed #ccc",
+            border: "4px solid #ccc",
             alignSelf: "center",
             backgroundColor: "#f7f7f7",
           }}
@@ -103,20 +111,6 @@ export default function TrafficInfo({ objectModel }) {
           Update
         </Button>
       </Flex>
-      <Text
-        style={{
-          fontFamily: "Greycliff CF, var(--mantine-font-family)",
-          fontWeight: 500,
-          fontSize: "0.9rem",
-          textShadow: "0 0 10px #ccc",
-        }}
-        mt="4rem"
-        ta="start"
-      >
-        <strong>*Note:</strong> The LED information is a string of 12 characters
-        and not allowed to contain special characters. The string will show on
-        the scren LCD 2*16 through by Raspberry Pi.
-      </Text>
     </Container>
   );
 }

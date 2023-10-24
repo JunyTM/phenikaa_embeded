@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import InputTimeLED from "./inputTimeLED";
+import SwitchModLED from "./switchModLED";
 import { Container, Title, Button, Text } from "@mantine/core";
 
 export default function TrafficTimeController({ objectModel }) {
@@ -15,7 +16,7 @@ export default function TrafficTimeController({ objectModel }) {
   };
 
   return (
-    <Container size="fluid" className="TrafficTimeController read-the-docs">
+    <Container  className="TrafficTimeController read-the-docs">
       <Title
         p="1rem"
         // mb="0.2rem"
@@ -32,37 +33,57 @@ export default function TrafficTimeController({ objectModel }) {
         fw={900}
         ta="center"
       >
-        Traffic Control Time Down
+        Điều khiển thời gian đèn giao thông
       </Title>
 
       <Container
         style={{
           width: "90%",
-          height: "48%",
+          height: "38%",
           padding: "0.5rem",
           borderRadius: "0.2rem",
-          marginBottom: "0.5rem",
-          // backgroundColor: "#a2a5a84f",
         }}
       >
         <InputTimeLED
-          title="- Time red:"
+          title="- Thời gian đèn đỏ:"
           time={data.time_red}
           type="time_red"
           data={data}
           setTime={setData}
         />
         <InputTimeLED
-          title="- Time yellow:"
+          title="- Thời gian đèn vàng:"
           time={data.time_yellow}
           type="time_yellow"
           data={data}
           setTime={setData}
         />
         <InputTimeLED
-          title="- Time green:"
+          title="- Thời gian đèn xanh:"
           time={data.time_green}
           type="time_green"
+          data={data}
+          setTime={setData}
+        />
+      </Container>
+
+      <Container
+        style={{
+          width: "100%",
+          height: "26%",
+          borderRadius: "0.2rem",
+        }}
+      >
+        <SwitchModLED
+          title="*Chế độ ban đêm:"
+          data={data}
+          setData={setData}
+        />
+        {/* <SwitchEmerLED title="- Emergency:" data={data} setData={setData} /> */}
+        <InputTimeLED
+          title="*Thời gian đèn ưu tiên:"
+          type="time_emergency"
+          time={data.time_emergency}
           data={data}
           setTime={setData}
         />
@@ -71,12 +92,10 @@ export default function TrafficTimeController({ objectModel }) {
       <Button
         w="50%"
         justify="center"
-        // leftSection={icon}
-        // rightSection={icon}
         variant="filled"
         onClick={handelButtonUpdate}
       >
-        submit
+        Cập nhập 
       </Button>
 
       <Text

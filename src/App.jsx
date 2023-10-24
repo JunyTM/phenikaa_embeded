@@ -8,7 +8,9 @@ import { MantineProvider } from "@mantine/core";
 function App() {
   return (
     <MantineProvider>
-      <LeadGrid />
+      <div className="LeadGrid">
+        <LeadGrid />
+      </div>
     </MantineProvider>
   );
 }
