@@ -16,7 +16,7 @@ export default function TrafficTimeController({ objectModel }) {
   };
 
   return (
-    <Container  className="TrafficTimeController read-the-docs">
+    <Container className="TrafficTimeController read-the-docs">
       <Title
         p="1rem"
         // mb="0.2rem"
@@ -39,7 +39,7 @@ export default function TrafficTimeController({ objectModel }) {
       <Container
         style={{
           width: "90%",
-          height: "38%",
+          height: "34%",
           padding: "0.5rem",
           borderRadius: "0.2rem",
         }}
@@ -74,11 +74,7 @@ export default function TrafficTimeController({ objectModel }) {
           borderRadius: "0.2rem",
         }}
       >
-        <SwitchModLED
-          title="*Chế độ ban đêm:"
-          data={data}
-          setData={setData}
-        />
+        <SwitchModLED title="*Chế độ ban đêm:" data={data} setData={setData} />
         {/* <SwitchEmerLED title="- Emergency:" data={data} setData={setData} /> */}
         <InputTimeLED
           title="*Thời gian đèn ưu tiên:"
@@ -95,7 +91,7 @@ export default function TrafficTimeController({ objectModel }) {
         variant="filled"
         onClick={handelButtonUpdate}
       >
-        Cập nhập 
+        Cập nhập
       </Button>
 
       <Text
@@ -108,7 +104,7 @@ export default function TrafficTimeController({ objectModel }) {
         mt="1rem"
         ta="center"
       >
-        <strong>*Note:</strong> Time traffic not allowed hight than 10s
+        <strong>*Lưu ý:</strong> Thiết lập thời gian cho các đèn cần nhỏ hơn 10s
       </Text>
     </Container>
   );
